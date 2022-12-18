@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.goals.GoalsEditFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/lightblue">
+
+        <TextView
+            android:id="@+id/fixNewGoalTitle"
+            android:layout_width="259dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/font4"
+            android:text="Define your new goal"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputNewGoal"
+            android:layout_width="366dp"
+            android:layout_height="139dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/white_box_with_border"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:paddingLeft="5dp"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fixNewGoalTitle" />
+
+        <TextView
+            android:id="@+id/fixScheduleTitle"
+            android:layout_width="230dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/font4"
+            android:text="Schedule New Time"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputNewGoal" />
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="171dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:backgroundTint="#66FB15"
+            android:fontFamily="monospace"
+            android:text="Save"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputNewDate"
+            app:strokeColor="#FAFAFA"
+            app:strokeWidth="3dp" />
+
+        <Button
+            android:id="@+id/delBtn"
+            android:layout_width="171dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#FB2020"
+            android:fontFamily="monospace"
+            android:text="Delete"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="@+id/saveBtn"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/saveBtn"
+            app:layout_constraintTop_toBottomOf="@+id/saveBtn"
+            app:strokeColor="#000000"
+            app:strokeWidth="3dp" />
+
+        <!--        <EditText-->
+<!--            android:id="@+id/inputNewDate"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="28dp"-->
+<!--            android:ems="10"-->
+<!--            android:inputType="textPersonName"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/calanderIcon"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/calanderIcon"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/calanderIcon"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
+        <ImageView
+            android:id="@+id/calanderIcon"
+            android:layout_width="45dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/calander_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fixScheduleTitle" />
+
+        <TextView
+            android:id="@+id/inputNewDate"
+            android:layout_width="213dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/underline_box"
+            android:clickable="true"
+            android:fontFamily="sans-serif"
+            android:hint="Select a date here"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textColorHint="#7A7777"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/calanderIcon"
+            app:layout_constraintStart_toEndOf="@+id/calanderIcon"
+            app:layout_constraintTop_toTopOf="@+id/calanderIcon"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

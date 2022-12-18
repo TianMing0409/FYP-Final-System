@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#03A9F4"
+        android:padding="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="376dp"
+            android:layout_height="118dp">
+
+            <TextView
+                android:id="@+id/boxBackground"
+                android:layout_width="349dp"
+                android:layout_height="116dp"
+                android:background="@drawable/box"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/goal_image_CG"
+                android:layout_width="48dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/keyboard_arrow_right_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/boxBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+            <TextView
+                android:id="@+id/shcedule_date_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="serif"
+                android:text="Target Date:"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/goal_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/goal_title"
+                app:layout_constraintTop_toBottomOf="@+id/goal_title" />
+
+            <TextView
+                android:id="@+id/target_date"
+                android:layout_width="146dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="12dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Schedule_date"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/shcedule_date_title"
+                app:layout_constraintStart_toEndOf="@+id/shcedule_date_title"
+                app:layout_constraintTop_toTopOf="@+id/shcedule_date_title"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/goal_title"
+                android:layout_width="265dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="serif"
+                android:text="Active Goals Tilte"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

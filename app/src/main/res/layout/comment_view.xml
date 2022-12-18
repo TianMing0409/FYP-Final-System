@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="390dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/box">
+
+    <TextView
+        android:id="@+id/comment_username"
+        android:layout_width="254dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Commennt Username"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/comment_date"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
+        android:lineSpacingExtra="14sp"
+        android:text="Comment Date"
+        android:textColor="#5A5A5A"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/comment_username"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/comment_username"
+        app:layout_constraintTop_toBottomOf="@+id/comment_username" />
+
+    <TextView
+        android:id="@+id/comment_content"
+        android:layout_width="382dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="15dp"
+        android:text="Comment Contents"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/comment_date"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comment_date" />
+</RelativeLayout>

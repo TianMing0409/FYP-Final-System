@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name = "grey">#c9c9c9</color>
+    <color name = "lightGrey">#e3e3e3</color>
+    <color name = "lightblue">#759aff</color>
+    <color name = "verylightgrey">#f2f2f2</color>
+    <color name="whitegrey">#f5f5f5</color>
+    <color name="blue">#84FBFF</color>
+    <color name="blue_500">#004dca</color>
+    <color name="blue_200">#4284ed</color>
+    <color name="blue_accent_300">#02d5ee</color>
+    <color name="gold">#FFD770</color>
+    <color name="light_gray">#CCCCCC</color>
+    <color name="transparent">#00000000</color>
+    <color name="blue_shadow_color">#B9DADF</color>
+    <color name="loader_background_color">#55AAAAAA</color>
+    <color name="card_bg_color">#F4F4F4</color>
+    <color name="color_primary">#00c853</color>
+    <color name="darker_blue">#00c3ff</color>
+    <color name="light_blue">#8ae8ff</color>
+    <color name="colorBlueMidnight">#003366</color>
+    <color name="holo_red_light">#ff4444</color>
+    <color name="black">#FF000000</color>
+    <color name="dark_gray">#505050</color>
+    <color name="gray">#999999</color>
+</resources>

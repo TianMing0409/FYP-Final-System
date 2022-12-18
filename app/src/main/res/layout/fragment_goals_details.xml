@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.goals.GoalsDetailsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/background"
+            android:layout_width="413dp"
+            android:layout_height="106dp"
+            android:background="#FF8946"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/schedule_title"
+            android:layout_width="111dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Schedule For:"
+            android:textColor="#373737"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/schedule_date"
+            android:layout_width="196dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/font3"
+            android:text="Date"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@+id/schedule_title"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="@+id/schedule_title"
+            app:layout_constraintTop_toBottomOf="@+id/schedule_title" />
+
+        <TextView
+            android:id="@+id/goal"
+            android:layout_width="354dp"
+            android:layout_height="212dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/box"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Goals"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleGoal" />
+
+        <TextView
+            android:id="@+id/titleGoal"
+            android:layout_width="64dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:text="Goal"
+            android:textColor="#303030"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/goal"
+            app:layout_constraintStart_toStartOf="@+id/goal"
+            app:layout_constraintTop_toBottomOf="@+id/background" />
+
+        <Button
+            android:id="@+id/completeBtn"
+            android:layout_width="219dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="52dp"
+            android:backgroundTint="#66FB15"
+            android:fontFamily="@font/font6"
+            android:text="Complete"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goal"
+            app:strokeWidth="1dp" />
+
+        <Button
+            android:id="@+id/editBtn"
+            android:layout_width="69dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="13dp"
+            android:backgroundTint="#F8C52D"
+            android:fontFamily="@font/font2"
+            android:text="Edit"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/goal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/background"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="411dp"
+            android:layout_height="629dp"
+            android:textColor="#000000"
+            android:translationZ="-90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/lightblue"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
