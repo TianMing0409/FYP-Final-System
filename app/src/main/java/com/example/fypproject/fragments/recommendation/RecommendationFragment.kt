@@ -23,7 +23,7 @@ class RecommendationFragment : DialogFragment() {
     private lateinit var binding : FragmentRecommendationBinding
 
     private lateinit var db : DatabaseReference
-    private lateinit var auth : FirebaseAuth
+//    private lateinit var auth : FirebaseAuth
     private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
@@ -34,10 +34,10 @@ class RecommendationFragment : DialogFragment() {
 
         binding = FragmentRecommendationBinding.inflate(inflater,container,false)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
-        //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
-        db = FirebaseDatabase.getInstance().getReference("Moods")
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
+//        //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
+        db = FirebaseDatabase.getInstance().getReference("Stats")
 
 
         binding.cancelBtn.setOnClickListener(){

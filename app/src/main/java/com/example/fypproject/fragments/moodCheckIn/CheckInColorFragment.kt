@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.room.Database
 import com.example.fypproject.R
 import com.example.fypproject.data.*
 import com.example.fypproject.fragments.loginSignUp.HistoryCheckInFragment
+import com.example.fypproject.fragments.recommendation.RecommendationFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -57,6 +59,8 @@ class CheckInColorFragment : DialogFragment() {
                 instructGuestToChooseAMood(view)
             } else {
                 submitMoodEntry(checkBoxList, notesEditText)
+                val recommDialog = RecommendationFragment()
+                recommDialog.show((activity as AppCompatActivity).supportFragmentManager, "showPopUp")
                 replaceFragment(HistoryCheckInFragment())
             }
         }

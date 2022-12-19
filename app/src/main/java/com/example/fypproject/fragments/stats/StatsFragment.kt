@@ -22,7 +22,7 @@ class StatsFragment : Fragment() {
 
     private lateinit var binding : FragmentStatsBinding
     private lateinit var db : DatabaseReference
-    private lateinit var auth : FirebaseAuth
+//    private lateinit var auth : FirebaseAuth
     private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
@@ -34,8 +34,8 @@ class StatsFragment : Fragment() {
         //val view =inflater.inflate(R.layout.fragment_stats,container,false)
         binding = FragmentStatsBinding.inflate(inflater,container,false)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Stats")
 
@@ -60,7 +60,10 @@ class StatsFragment : Fragment() {
         }
 
         db.child(userUId).child("GoalCompleted").get().addOnSuccessListener {
-            val goalCompletedCount = it.value
+            var goalCompletedCount = it.value
+            if(goalCompletedCount == null){
+                goalCompletedCount = 0
+            }
             binding.inputCompletedGoalCount.setText("" + goalCompletedCount.toString() )
         }
 

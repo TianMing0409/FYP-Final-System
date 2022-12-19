@@ -49,17 +49,15 @@ isMusic = False
 
 def recomm_music(emotion):
     NUM_RECOMMEND=20
-    if emotion == 'verySad':
-        # happy_set.append(df[df['kmeans']==0]['song_title'].head(NUM_RECOMMEND))
-        # return happy_set
+    if (emotion == 'verySad' or emotion == 'UPSET' or emotion == 'RED' or emotion == 'OneStar'):
         return "Listen Music : " + df[df['kmeans']==0]['song_name'].head(NUM_RECOMMEND).sample().to_string(index = False)
-    elif emotion == 'sad':
+    elif (emotion == 'sad' or emotion == 'DOWN' or emotion == 'ORANGE' or emotion == 'TwoStar'):
         return "Listen Music : " + df[df['kmeans']==1]['song_name'].head(NUM_RECOMMEND).sample().to_string(index = False)
-    elif emotion == 'normal':
+    elif (emotion == 'normal' or emotion == 'NEUTRAL' or emotion == 'YELLOW' or emotion == 'ThreeStar'):
         return "Listen Music : " + df[df['kmeans']==2]['song_name'].head(NUM_RECOMMEND).sample().to_string(index = False)
-    elif emotion == 'happy':
+    elif (emotion == 'happy' or emotion == 'COPING' or emotion == 'GREEN' or emotion == 'FourStar'):
         return "Listen Music : " + df[df['kmeans']==3]['song_name'].head(NUM_RECOMMEND).sample().to_string(index = False)
-    elif emotion == 'veryHappy':
+    elif (emotion == 'veryHappy' or emotion == 'ELATED' or emotion == 'DARKGREEN' or emotion == 'FiveStar'):
         return "Listen Music : " + df[df['kmeans']==4]['song_name'].head(NUM_RECOMMEND).sample().to_string(index = False)
 
 ##########################################################################################################################
@@ -70,15 +68,15 @@ import requests as HTTP
 def recomm_movie(emotion):
 
     url = ""
-    if (emotion == "sad"):
-        url = 'http://www.imdb.com/search/title?genres=drama&title_type=feature&sort=moviemeter, asc'
-    elif(emotion == "verySad"):
+    if (emotion == 'verySad' or emotion == 'UPSET' or emotion == 'RED' or emotion == 'OneStar'):
         url = 'http://www.imdb.com/search/title?genres=musical&title_type=feature&sort=moviemeter, asc'
-    elif(emotion == "normal"):
+    elif(emotion == 'sad' or emotion == 'DOWN' or emotion == 'ORANGE' or emotion == 'TwoStar'):
+        url = 'http://www.imdb.com/search/title?genres=drama&title_type=feature&sort=moviemeter, asc'
+    elif(emotion == 'normal' or emotion == 'NEUTRAL' or emotion == 'YELLOW' or emotion == 'ThreeStar'):
         url = 'http://www.imdb.com/search/title?genres=thriller&title_type=feature&sort=moviemeter, asc'
-    elif(emotion == "happy"):
+    elif(emotion == 'happy' or emotion == 'COPING' or emotion == 'GREEN' or emotion == 'FourStar'):
         url = 'http://www.imdb.com/search/title?genres=western&title_type=feature&sort=moviemeter, asc'
-    elif(emotion == "veryHappy"):
+    elif(emotion == 'veryHappy' or emotion == 'ELATED' or emotion == 'DARKGREEN' or emotion == 'FiveStar'):
         url = 'http://www.imdb.com/search/title?genres=film_noir&title_type=feature&sort=moviemeter, asc'
 
     movies = []

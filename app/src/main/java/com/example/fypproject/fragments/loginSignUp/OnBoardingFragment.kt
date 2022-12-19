@@ -18,12 +18,11 @@ class OnBoardingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        activity?.findViewById<View>(R.id.bottom_navigation)?.visibility  = View.GONE
+
         binding = FragmentOnBoardingBinding.inflate(inflater,container,false)
 
         binding.btnGetStarted.setOnClickListener {
-            /*val intent = Intent(this, SignupFragment::class.java)
-            startActivity(intent)*/
-
             replaceFragment(SignupFragment())
 
         }
