@@ -107,15 +107,6 @@ class CreatePostFragment : Fragment() {
     private fun uploadPostIntoDb(postID: String, postUsername: String ,postDate:String, postDetails : String, likeCount: Int,
                            commentCount: Int, imageUrl : String,userID : String) {
 
-//        val c: Calendar = Calendar.getInstance()
-//        val sdf: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-//        dt = sdf.format(c.time);
-//
-//        val postID = "P" + (0..9000).random()
-//        val postDate = dt
-//        val likeCount = 0
-//        val commentCount = 0
-
         val post = Posts(postID,postUsername ,postDate, postDetails,commentCount,imageUrl,userID)
 
         db.child(postID).setValue(post).addOnSuccessListener {

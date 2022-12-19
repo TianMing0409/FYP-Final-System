@@ -36,7 +36,6 @@ class CongratulationFragment : DialogFragment() {
 
         binding = FragmentCongratulationBinding.inflate(inflater,container,false)
 
-
         val randomValues = Random.nextInt(0,4)
         if(randomValues == 0) {
             binding.goodRabbit.visibility = View.GONE

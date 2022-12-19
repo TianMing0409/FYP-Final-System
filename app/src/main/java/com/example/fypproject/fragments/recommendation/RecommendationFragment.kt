@@ -23,7 +23,6 @@ class RecommendationFragment : DialogFragment() {
     private lateinit var binding : FragmentRecommendationBinding
 
     private lateinit var db : DatabaseReference
-//    private lateinit var auth : FirebaseAuth
     private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
@@ -34,16 +33,12 @@ class RecommendationFragment : DialogFragment() {
 
         binding = FragmentRecommendationBinding.inflate(inflater,container,false)
 
-//        auth = FirebaseAuth.getInstance()
-//        tempUId = auth.uid.toString()
-//        //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Stats")
 
 
         binding.cancelBtn.setOnClickListener(){
             dismiss()
         }
-
 
         val linkGoaltv = binding.goToGoalLink
         val content = SpannableString("Click here to set your own goal")
@@ -75,13 +70,6 @@ class RecommendationFragment : DialogFragment() {
             fragmentTransaction.commit()
         }
     }
-
-//    override fun onStart() {
-//        super.onStart()
-//
-//        dialog?.window?.setLayout(1000,1100)
-//        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//    }
 
     private fun getRecommMusic(userMood : String): String{
 
@@ -159,13 +147,11 @@ class RecommendationFragment : DialogFragment() {
             binding.recommendationMusic.text = getRecommMusic(mood)
             binding.recommendationMovie.text = getRecommMovie(mood)
 
-//            binding.inputRecommDate.text = getRecommendationDate()
-
             //Add music recommendation as goal (Direct to Add goal page)
             binding.addRecommMusicBtn.setOnClickListener(){
                 val recommMusic = binding.recommendationMusic.text.toString()
                 val recommMusic_day = getRecommMusicDay().toInt()
-                val recommMusic_month = getRecommMusicMonth().toInt()  //Minus 1 month to get proper month
+                val recommMusic_month = getRecommMusicMonth().toInt()
                 val recommMusic_year = getRecommMusicYear().toInt()
 
                 val bundle = Bundle()
@@ -189,7 +175,7 @@ class RecommendationFragment : DialogFragment() {
             binding.addRecommMovieBtn.setOnClickListener(){
                 val recommMovie = binding.recommendationMovie.text.toString()
                 val recommMovie_day = getRecommMovieDay().toInt()
-                val recommMovie_month = getRecommMovieMonth().toInt()    //Minus 1 month to get proper month
+                val recommMovie_month = getRecommMovieMonth().toInt()
                 val recommMovie_year = getRecommMovieYear().toInt()
 
                 val bundle = Bundle()

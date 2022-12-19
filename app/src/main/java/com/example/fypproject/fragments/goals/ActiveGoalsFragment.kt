@@ -131,8 +131,6 @@ class ActiveGoalsFragment : Fragment(R.layout.fragment_active_goals), Communicat
         val month = today.get(Calendar.MONTH) + 1
         val day = today.get(Calendar.DAY_OF_MONTH)
 
-
-
         val getData = db.child("Active").child(userUId)
 
         getData.addValueEventListener(object : ValueEventListener {
@@ -152,7 +150,6 @@ class ActiveGoalsFragment : Fragment(R.layout.fragment_active_goals), Communicat
                         }
                     }
                 }
-//                    userRecyclerView.adapter = GoalRecyclerAdapter(userArrayList,this@ActiveGoalsFragment)
             }
 
             override fun onCancelled(error: DatabaseError) {

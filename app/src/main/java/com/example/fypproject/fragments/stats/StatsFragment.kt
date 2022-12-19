@@ -23,7 +23,7 @@ class StatsFragment : Fragment() {
     private lateinit var binding : FragmentStatsBinding
     private lateinit var db : DatabaseReference
 //    private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     override fun onCreateView(
@@ -33,6 +33,8 @@ class StatsFragment : Fragment() {
         // Inflate the layout for this fragment
         //val view =inflater.inflate(R.layout.fragment_stats,container,false)
         binding = FragmentStatsBinding.inflate(inflater,container,false)
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
 //        auth = FirebaseAuth.getInstance()
 //        tempUId = auth.uid.toString()
@@ -73,10 +75,11 @@ class StatsFragment : Fragment() {
 
     private fun setPieChart() {
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         binding.pieChart.isGone = false
         binding.barChart.isGone =  true
         binding.scatterChart.isGone = true
-
         db.child(userUId).child("TotalMoods").get().addOnSuccessListener {
             val verySad = it.child("verySad").value
             val sad = it.child("sad").value
@@ -167,10 +170,11 @@ class StatsFragment : Fragment() {
     }
     private fun setBarChart(){
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         binding.pieChart.isGone = true
         binding.scatterChart.isGone = true
         binding.barChart.isGone =  false
-
 
         db.child(userUId).child("TotalMoods").get().addOnSuccessListener {
             val verySad = it.child("verySad").value
@@ -221,11 +225,14 @@ class StatsFragment : Fragment() {
 
     private fun setScatterChart(){
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         binding.pieChart.isGone = true
         binding.barChart.isGone = true
         binding.scatterChart.isGone = false
 
         db.child(userUId).child("TotalMoods").get().addOnSuccessListener {
+
             val verySad = it.child("verySad").value
             val sad = it.child("sad").value
             val normal = it.child("normal").value
