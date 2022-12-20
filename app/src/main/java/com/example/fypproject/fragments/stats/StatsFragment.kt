@@ -1,7 +1,9 @@
 package com.example.fypproject.fragments.stats
 
+import android.content.ContentValues
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +26,7 @@ class StatsFragment : Fragment() {
     private lateinit var db : DatabaseReference
 //    private lateinit var auth : FirebaseAuth
 //    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
-    var tempUId = ""
+//    var tempUId = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,7 @@ class StatsFragment : Fragment() {
         binding = FragmentStatsBinding.inflate(inflater,container,false)
 
         val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+        Log.v(ContentValues.TAG, "The user ID is : $userUId")
 
 //        auth = FirebaseAuth.getInstance()
 //        tempUId = auth.uid.toString()

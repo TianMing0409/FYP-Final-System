@@ -29,7 +29,7 @@ class GoalsDetailsFragment : Fragment() {
     private lateinit var db : DatabaseReference
     private lateinit var db2 : DatabaseReference
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     var inputPos: Int? = null
@@ -47,8 +47,9 @@ class GoalsDetailsFragment : Fragment() {
         //val view =inflater.inflate(R.layout.fragment_goals_details,container,false)
         binding = FragmentGoalsDetailsBinding.inflate(inflater,container,false)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Goals")
         db2 = FirebaseDatabase.getInstance().getReference("Stats")
@@ -121,6 +122,8 @@ class GoalsDetailsFragment : Fragment() {
 
     private fun deleteGoal(goalID : String ,goalName : String ,goalStatus : String, goalTargetDate : String) {
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         db.child("Active").child(userUId)
             .child(goalID).removeValue()
 
@@ -128,6 +131,8 @@ class GoalsDetailsFragment : Fragment() {
     }
 
     private fun uploadGoal(goalID : String ,goalName : String ,goalStatus : String, goalTargetDate : String) {
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val goal = Goals(goalID, goalName,goalStatus, goalTargetDate)
 
@@ -142,10 +147,14 @@ class GoalsDetailsFragment : Fragment() {
     }
 
     private fun updateCompletedGoalCount(goalCompletedCount : Int){
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         db2.child(userUId).child("GoalCompleted").setValue(goalCompletedCount+1)
     }
 
     private fun deleteExpiredGoal(goalID : String) {
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         db.child("Expired").child(userUId)
             .child(goalID).removeValue()

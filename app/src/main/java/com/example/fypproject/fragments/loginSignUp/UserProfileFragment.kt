@@ -27,9 +27,12 @@ import com.google.firebase.database.*
 import java.util.*
 import kotlin.collections.ArrayList
 import android.util.Base64
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat
 import com.bumptech.glide.Glide
 import com.example.fypproject.data.UserData
+import com.example.fypproject.databinding.ActivityMainBinding
+import com.example.fypproject.fragments.goals.ActiveGoalsFragment
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
@@ -77,6 +80,7 @@ class UserProfileFragment : Fragment() {
 
         binding.signOutButton.setOnClickListener {
             viewModel.signOut(mAuth)
+            mAuth.signOut()
             replaceFragment(LoginFragment())
         }
 

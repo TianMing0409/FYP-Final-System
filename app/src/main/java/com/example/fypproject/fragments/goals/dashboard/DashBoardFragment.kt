@@ -1,6 +1,8 @@
 package com.example.fypproject.fragments.goals.dashboard
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -14,6 +16,7 @@ import com.example.fypproject.util.viewBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 
 
 class DashBoardFragment : Fragment(R.layout.fragment_dashboard) {
@@ -31,6 +34,9 @@ class DashBoardFragment : Fragment(R.layout.fragment_dashboard) {
 
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 //    binding = FragmentDashboardBinding.inflate(inflater,container,false)
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+        Log.v(ContentValues.TAG, "The user ID is : $userUId")
 
         addGoalFab = view.findViewById(R.id.fabAddGoal)
 

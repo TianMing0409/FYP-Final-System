@@ -29,7 +29,7 @@ class AddGoalsFragment : Fragment() {
 
     private lateinit var db : DatabaseReference
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     var recomm: String = ""
@@ -199,6 +199,8 @@ class AddGoalsFragment : Fragment() {
     }
 
     private fun uploadGoal(goalName : String , goalTargetDate : String) {
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val goalID = "G" + (0..3000).random()
         val goalStatus = "Active"

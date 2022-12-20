@@ -21,14 +21,14 @@ import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ExpiredGoalsFragment : Fragment(R.layout.fragment_expired_goals), Communicator {
+class ExpiredGoalsFragment : Fragment(), Communicator {
 
     private lateinit var binding : FragmentExpiredGoalsBinding
     private lateinit var db : DatabaseReference
     private lateinit var userRecyclerView : RecyclerView
     private lateinit var userArrayList : ArrayList<Goals>
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     override fun onCreateView(
@@ -39,8 +39,9 @@ class ExpiredGoalsFragment : Fragment(R.layout.fragment_expired_goals), Communic
 //        return inflater.inflate(R.layout.fragment_expired_goals, container, false)
         binding = FragmentExpiredGoalsBinding.inflate(inflater,container,false)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Goals")
 
@@ -56,6 +57,8 @@ class ExpiredGoalsFragment : Fragment(R.layout.fragment_expired_goals), Communic
     }
 
     private fun getExpiredGoalsData(){
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val getData = db.child("Expired").child(userUId)
 

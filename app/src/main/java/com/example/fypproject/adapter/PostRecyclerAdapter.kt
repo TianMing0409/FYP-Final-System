@@ -29,7 +29,7 @@ class PostRecyclerAdapter (private val posts: ArrayList<Posts>,private val liste
 
     private lateinit var db : DatabaseReference
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
     private var isBookmark = false
 //    private lateinit var bookmarkArrayList : ArrayList<Bookmarks>
@@ -84,6 +84,8 @@ class PostRecyclerAdapter (private val posts: ArrayList<Posts>,private val liste
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         val currentItem = posts[position]
         holder.username.text = currentItem.postUsername
         holder.postDate.text = currentItem.postDate
@@ -135,6 +137,9 @@ class PostRecyclerAdapter (private val posts: ArrayList<Posts>,private val liste
     }
 
     private fun checkIsBookmark(postId : String, bookmarkIcon : ImageView){
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         db = FirebaseDatabase.getInstance().getReference("Bookmarks")
 
         db.child(userUId).child(postId).addValueEventListener(object : ValueEventListener{

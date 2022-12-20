@@ -1,7 +1,9 @@
 package com.example.fypproject.fragments.goals
 
+import android.content.ContentValues.TAG
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,31 +32,15 @@ import java.util.ArrayList
 import java.util.Calendar
 
 
-class ActiveGoalsFragment : Fragment(R.layout.fragment_active_goals), Communicator {
+class ActiveGoalsFragment : Fragment(), Communicator {
 
     private lateinit var binding : FragmentActiveGoalsBinding
     private lateinit var db : DatabaseReference
     private lateinit var userRecyclerView : RecyclerView
     private lateinit var userArrayList :ArrayList<Goals>
-    private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
-    var tempUId = ""
-
-
-    //private val binding by viewBinding(FragmentActiveGoalsBinding::bind)
-
-    //Testing purpose variables (Need to modify)
-//    private var titleList = mutableListOf<String>()
-//    private var dateList = mutableListOf<String>()
-//    private var imageList = mutableListOf<Int>()
-
-
-    companion object {
-        fun newInstance() = CommunityFragment()
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
+//    private lateinit var auth : FirebaseAuth
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    var tempUId = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,11 +50,13 @@ class ActiveGoalsFragment : Fragment(R.layout.fragment_active_goals), Communicat
         binding = FragmentActiveGoalsBinding.inflate(inflater,container,false)
         //val view =inflater.inflate(R.layout.fragment_active_goals,container,false)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+        Log.v(TAG, "The user ID is : $userUId")
+
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Goals")
-
 
         userRecyclerView = binding.goalRecyclerView
         userRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -76,12 +64,16 @@ class ActiveGoalsFragment : Fragment(R.layout.fragment_active_goals), Communicat
         userArrayList = arrayListOf<Goals>()
 
         checkExpiredGoal()
-        getGoalsData()
+        getGoalsData(userUId)
 
         return binding.root
     }
 
-    private fun getGoalsData(){
+    private fun getGoalsData(userUId : String){
+
+//        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
+        Log.v(TAG, "The user ID is : $userUId")
 
         val getData = db.child("Active").child(userUId)
 
@@ -124,6 +116,8 @@ class ActiveGoalsFragment : Fragment(R.layout.fragment_active_goals), Communicat
 
     private fun checkExpiredGoal(){
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         val formatter = SimpleDateFormat("dd-MM-yyyy")
 
         val today = Calendar.getInstance()
@@ -163,12 +157,16 @@ class ActiveGoalsFragment : Fragment(R.layout.fragment_active_goals), Communicat
 
     private fun deleteGoal(goalID : String) {
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         db.child("Active").child(userUId)
             .child(goalID).removeValue()
 
     }
 
     private fun updateExpiredGoal(goalID : String ,goalName : String ,goalStatus : String, goalTargetDate : String) {
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val goalStatus = "Expired"
         val goal = Goals(goalID, goalName,goalStatus, goalTargetDate)

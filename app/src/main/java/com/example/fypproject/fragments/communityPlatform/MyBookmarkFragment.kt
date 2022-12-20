@@ -30,7 +30,7 @@ class MyBookmarkFragment : Fragment(R.layout.fragment_my_bookmark), PassCommData
 //    private lateinit var bookmarkArrayList : ArrayList<Bookmarks>
     private lateinit var bookmarkArrayList : ArrayList<Bookmarks>
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     override fun onCreateView(
@@ -57,6 +57,8 @@ class MyBookmarkFragment : Fragment(R.layout.fragment_my_bookmark), PassCommData
 
     private fun getMyBookmarkData(){
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         val getData = db.child(userUId)
 
         getData.addValueEventListener(object : ValueEventListener {
@@ -69,6 +71,7 @@ class MyBookmarkFragment : Fragment(R.layout.fragment_my_bookmark), PassCommData
                         bookmarkArrayList.add(bookmarks!!)
                     }
                     userRecyclerView.adapter = BookmarkAdapter(bookmarkArrayList,this@MyBookmarkFragment)
+                    BookmarkAdapter(bookmarkArrayList,this@MyBookmarkFragment).notifyDataSetChanged()
                 }
             }
 

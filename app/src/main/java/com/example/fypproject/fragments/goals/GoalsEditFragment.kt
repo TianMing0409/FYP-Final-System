@@ -27,8 +27,8 @@ class GoalsEditFragment : Fragment() {
 
     private lateinit var db : DatabaseReference
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
-    var tempUId = ""
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    var tempUId = ""
 
     var inputPos: Int? = null
     var inputGoalId : String = ""
@@ -45,8 +45,8 @@ class GoalsEditFragment : Fragment() {
         //val view =inflater.inflate(R.layout.fragment_goals_edit,container,false)
         binding = FragmentGoalsEditBinding.inflate(inflater,container,false)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Goals")
 
@@ -135,6 +135,8 @@ class GoalsEditFragment : Fragment() {
 
     private fun editGoal(goalID : String ,goalName : String ,goalStatus : String, goalTargetDate : String) {
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         val goal = Goals(goalID, goalName,goalStatus, goalTargetDate)
 
         db.child("Active").child(userUId)
@@ -150,6 +152,8 @@ class GoalsEditFragment : Fragment() {
     }
 
     private fun deleteGoal(goalID : String ,goalName : String ,goalStatus : String, goalTargetDate : String) {
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         db.child("Active").child(userUId)
             .child(goalID).removeValue()
@@ -208,9 +212,10 @@ class GoalsEditFragment : Fragment() {
 
     private fun deleteExpiredGoal(goalID : String) {
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         db.child("Expired").child(userUId)
             .child(goalID).removeValue()
-
     }
 
     private fun replaceFragment(fragment: Fragment){

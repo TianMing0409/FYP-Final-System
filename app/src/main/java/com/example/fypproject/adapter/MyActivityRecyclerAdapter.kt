@@ -22,7 +22,7 @@ class MyActivityRecyclerAdapter (private val posts: ArrayList<Posts>, private va
 
     private lateinit var db : DatabaseReference
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
     private var isBookmark = false
 

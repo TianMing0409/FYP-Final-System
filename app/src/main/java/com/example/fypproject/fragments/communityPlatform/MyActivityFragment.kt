@@ -27,7 +27,7 @@ class MyActivityFragment : Fragment(), PassCommData {
     private lateinit var userRecyclerView : RecyclerView
     private lateinit var userArrayList : ArrayList<Posts>
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     override fun onCreateView(
@@ -61,6 +61,8 @@ class MyActivityFragment : Fragment(), PassCommData {
     }
 
     private fun myPostsData(){
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val getData = db
 

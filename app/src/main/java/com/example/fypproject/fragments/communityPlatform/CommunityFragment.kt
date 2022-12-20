@@ -37,7 +37,6 @@ class CommunityFragment : Fragment(R.layout.fragment_community), PassCommData {
     private lateinit var userArrayList : ArrayList<Posts>
     private lateinit var bookmarkArrayList : ArrayList<Bookmarks>
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     companion object {

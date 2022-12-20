@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
 
-class CompletedGoalsFragment : Fragment(R.layout.fragment_completed_goals), Communicator {
+class CompletedGoalsFragment : Fragment(), Communicator {
 
     //private lateinit var binding : FragmentCompletedGoalsBinding
     //private val binding by viewBinding(FragmentCompletedGoalsBinding::bind)
@@ -25,8 +25,8 @@ class CompletedGoalsFragment : Fragment(R.layout.fragment_completed_goals), Comm
     private lateinit var db : DatabaseReference
     private lateinit var userRecyclerView : RecyclerView
     private lateinit var userArrayList :ArrayList<Goals>
-    private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private lateinit var auth : FirebaseAuth
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     companion object {
@@ -55,8 +55,8 @@ class CompletedGoalsFragment : Fragment(R.layout.fragment_completed_goals), Comm
 //        binding.goalRecyclerView.layoutManager = LinearLayoutManager(context)
 //        binding.goalRecyclerView.adapter = GoalRecyclerAdapter(titleList,dateList,imageList)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Goals")
 
@@ -74,6 +74,8 @@ class CompletedGoalsFragment : Fragment(R.layout.fragment_completed_goals), Comm
     }
 
     private fun getCompletedGoalsData(){
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val getData = db.child("Completed").child(userUId)
 

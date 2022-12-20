@@ -21,7 +21,6 @@ class CompletedGoalDetailsFragment : Fragment() {
     private lateinit var db : DatabaseReference
     private lateinit var db2 : DatabaseReference
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     var inputPos: Int? = null

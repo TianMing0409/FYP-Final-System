@@ -38,7 +38,7 @@ class CreatePostFragment : Fragment() {
     private lateinit var db : DatabaseReference
     private lateinit var db2: DatabaseReference
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     //uri of picked image
@@ -82,6 +82,8 @@ class CreatePostFragment : Fragment() {
     private var imageUrl = ""
 
     private fun validateData(){
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         postDetails = binding.inputPost.text.toString().trim()
 

@@ -23,7 +23,7 @@ class RecommendationFragment : DialogFragment() {
     private lateinit var binding : FragmentRecommendationBinding
 
     private lateinit var db : DatabaseReference
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     override fun onCreateView(
@@ -138,6 +138,8 @@ class RecommendationFragment : DialogFragment() {
 
 
     private fun getMoodData() {
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val getData = db
 

@@ -27,7 +27,7 @@ class CommentFragment : Fragment() {
     private lateinit var userRecyclerView : RecyclerView
     private lateinit var userArrayList : ArrayList<Comments>
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
 
     var inputPos: Int? = null
@@ -64,10 +64,10 @@ class CommentFragment : Fragment() {
         }
 
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
-
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Posts")
 
@@ -164,6 +164,8 @@ class CommentFragment : Fragment() {
     }
 
     private fun updateBookmarkCommentCount(postId : String, commentCount : Int){
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         //Update bookmark comment count
         db2 = FirebaseDatabase.getInstance().getReference("Bookmarks")

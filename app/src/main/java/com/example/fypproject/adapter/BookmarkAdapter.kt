@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -25,7 +26,7 @@ class  BookmarkAdapter (private val bookmarks: ArrayList<Bookmarks>, private val
 
     private lateinit var db : DatabaseReference
     private lateinit var auth : FirebaseAuth
-    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//    private var userUId = FirebaseAuth.getInstance().currentUser!!.uid
     var tempUId = ""
     private var isBookmark = false
 
@@ -79,12 +80,13 @@ class  BookmarkAdapter (private val bookmarks: ArrayList<Bookmarks>, private val
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         val currentItem = bookmarks[position]
         holder.username.text = currentItem.postUsername
         holder.postDate.text = currentItem.postDate
         holder.postDetails.text = currentItem.postDetails
         holder.commentCount.setText(currentItem.commentCount.toString()+" comments")
-
 
         if(currentItem.imageUrl.toString() == ""){
             holder.postImage.setImageBitmap(null)
@@ -135,6 +137,34 @@ class  BookmarkAdapter (private val bookmarks: ArrayList<Bookmarks>, private val
                     }
             }
         }
+
+//        db = FirebaseDatabase.getInstance().getReference("Bookmarks")
+//        db.get().addOnSuccessListener {
+//            if(it.child(userUId).child(currentItem.postID).exists()){
+//                holder.itemView.visibility = VISIBLE
+//            }else{
+//                holder.itemView.visibility = GONE
+//            }
+//        }
+
+        //This is to clear the recyclerview when the item list is empty
+        db = FirebaseDatabase.getInstance().getReference("Bookmarks")
+
+        db.child(userUId).child(currentItem.postID).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    holder.itemView.visibility = VISIBLE
+                }else{
+                    holder.itemView.visibility = GONE
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError){
+
+            }
+
+        })
+
     }
 
     override fun getItemCount(): Int {
@@ -142,6 +172,9 @@ class  BookmarkAdapter (private val bookmarks: ArrayList<Bookmarks>, private val
     }
 
     private fun checkIsBookmark(postId : String, bookmarkIcon : ImageView){
+
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+
         db = FirebaseDatabase.getInstance().getReference("Bookmarks")
 
         db.child(userUId).child(postId).addValueEventListener(object : ValueEventListener {
