@@ -33,6 +33,7 @@ import com.bumptech.glide.Glide
 import com.example.fypproject.data.UserData
 import com.example.fypproject.databinding.ActivityMainBinding
 import com.example.fypproject.fragments.goals.ActiveGoalsFragment
+import com.example.fypproject.fragments.goals.dashboard.DashBoardFragment
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
@@ -55,11 +56,8 @@ class UserProfileFragment : Fragment() {
 
     private lateinit var mAuth: FirebaseAuth
 
-    var inputPos: Int? = null
-    var inputUsername : String = ""
-    var inputEmail: String = ""
-    var inputPassword: String = ""
-    var inputPhoneNumber: String = ""
+    private var checkIn = ""
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,7 +78,6 @@ class UserProfileFragment : Fragment() {
 
         binding.signOutButton.setOnClickListener {
             viewModel.signOut(mAuth)
-            mAuth.signOut()
             replaceFragment(LoginFragment())
         }
 
@@ -92,30 +89,35 @@ class UserProfileFragment : Fragment() {
             replaceFragment(EditProfileFragment())
         }
 
+        val myRef = FirebaseDatabase.getInstance().getReference("Check-In")
+
+        myRef.child(userUId).get().addOnSuccessListener {
+
+            val count = it.child("checkIn").value
+            binding.tvCheckIn.text = count.toString()
+
+        }
 
 
-        //binding.tvCheckIn.setText(recyclerView..itemCount)
 
-        /*binding.userImage.setOnClickListener{
-            val intent = Intent(this@UserProfileFragment.requireContext(),EditProfileActivity::class.java)
-            startActivity(intent)
 
-        }*/
-
-        /*imageRef.addValueEventListener(object: ValueEventListener {
+        /*myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // dataSnapshot contains the image data as a string
-                val imageData = dataSnapshot.getValue(String::class.java)
-                // Use the image data to create a Bitmap
-                val imageBitmap = base64ToBitmap(imageData)
-                // Display the image in an ImageView
-                binding.userImage.setImageURI(imageData)
+                val data = dataSnapshot.getValue(Int::class.java)
+                binding.tvCheckIn.text = data.toString().trim().
             }
-
             override fun onCancelled(error: DatabaseError) {
-                // An error occurred
+                // Failed to read value
+                Log.w("TAG", "Failed to read value.", error.toException())
             }
         })*/
+
+
+        /*val numRows = arguments?.getInt("num_rows")
+        if (numRows != null) {
+            binding.tvCheckIn.text = numRows.toString()
+        }*/
+
 
 
         viewModel.userWithData.observe(viewLifecycleOwner, Observer {
@@ -136,23 +138,19 @@ class UserProfileFragment : Fragment() {
         })
 
         /*binding.userImage.setOnClickListener(){ v:View ->
-
             //Send data
             val bundle = Bundle()
             bundle.putString("ori_user_username",inputUsername)
             bundle.putString("ori_user_email", inputEmail)
             bundle.putString("ori_user_password",inputPassword)
             bundle.putString("ori_user_phone", inputPhoneNumber)
-
             // Navigate fragment
             val transaction = this.parentFragmentManager.beginTransaction()
             val userProfileFragment = UserProfileFragment()
             userProfileFragment.arguments = bundle
-
             transaction.replace(R.id.fragment_container, EditProfileFragment())
             transaction.addToBackStack(null)
             transaction.commit()
-
         }*/
 
         recyclerView = view.findViewById(R.id.pastime_list)!!
@@ -233,7 +231,6 @@ class UserProfileFragment : Fragment() {
         else{
             val email = firebaseUser.email
             binding.subTitleTv.text = email
-
         }
     }*/
 
@@ -247,20 +244,4 @@ class UserProfileFragment : Fragment() {
         }
     }
 
-    /*override fun passData(position: Int, username : String, phoneNumber: String, email: String, password: String) {
-        val bundle = Bundle()
-        bundle.putInt("input_pos", position)
-        bundle.putString("ori_user_username",username)
-        bundle.putString("ori_user_phone", phoneNumber)
-        bundle.putString("ori_user_email",email)
-        bundle.putString("ori_user_password", password)
-
-        val transaction = this.parentFragmentManager.beginTransaction()
-        val editDetailsFragment = EditProfileFragment()
-        editDetailsFragment.arguments = bundle
-
-        transaction.replace(R.id.fragment_container, editDetailsFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }*/
 }

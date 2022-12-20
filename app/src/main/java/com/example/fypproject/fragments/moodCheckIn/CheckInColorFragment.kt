@@ -59,8 +59,6 @@ class CheckInColorFragment : DialogFragment() {
                 instructGuestToChooseAMood(view)
             } else {
                 submitMoodEntry(checkBoxList, notesEditText)
-                val recommDialog = RecommendationFragment()
-                recommDialog.show((activity as AppCompatActivity).supportFragmentManager, "showPopUp")
                 replaceFragment(HistoryCheckInFragment())
             }
         }
@@ -101,6 +99,14 @@ class CheckInColorFragment : DialogFragment() {
 
 
 
+        FirebaseDatabase.getInstance().getReference("Check-In").child(userUId)
+            .get().addOnSuccessListener {
+                val number = it.child("checkIn").value.toString().toInt()
+
+                FirebaseDatabase.getInstance().getReference("Check-In")
+                    .child(userUId).child("checkIn").setValue(number + 1)
+
+            }
 
         database = FirebaseDatabase.getInstance().getReference("Stats")
 
@@ -147,7 +153,6 @@ class CheckInColorFragment : DialogFragment() {
             val normal = it.child("normal").value.toString().toInt()
             val happy = it.child("happy").value.toString().toInt()
             val veryHappy = it.child("veryHappy").value.toString().toInt()
-
             if(moodEntry.mood == Mood.RED){
                 database.child(userUId).child("TotalMoods").child("verySad").setValue(verySad + 1)
             }

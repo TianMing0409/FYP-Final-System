@@ -120,25 +120,4 @@ class CompletedGoalsFragment : Fragment(), Communicator {
         transaction.commit()
     }
 
-
-//    //Dummy function to test data
-//    private fun addToList(title:String, date: String,image: Int){
-//        titleList.add(title)
-//        dateList.add(date)
-//        imageList.add(image)
-//    }
-//
-//    //Dummy function to test data
-//    private fun postToList(){
-//        for(i in 1..25){
-//            addToList("Completed Goal Title $i","Date $i",R.drawable.keyboard_arrow_right_icon)
-//        }
-//    }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//    }
-
-
-
 }

@@ -1,7 +1,9 @@
 package com.example.fypproject.fragments.communityPlatform
 
+import android.content.ContentValues
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -53,6 +55,10 @@ class CommunityFragment : Fragment(R.layout.fragment_community), PassCommData {
     ): View? {
 
         binding = FragmentCommunityBinding.inflate(inflater,container,false)
+
+
+//        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//        Log.v(ContentValues.TAG, "The user ID is : $userUId")
 
         //postToList()
 

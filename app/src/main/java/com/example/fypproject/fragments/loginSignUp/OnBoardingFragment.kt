@@ -23,7 +23,7 @@ class OnBoardingFragment : Fragment() {
         binding = FragmentOnBoardingBinding.inflate(inflater,container,false)
 
         binding.btnGetStarted.setOnClickListener {
-            replaceFragment(SignupFragment())
+            replaceFragment(LoginFragment())
 
         }
 

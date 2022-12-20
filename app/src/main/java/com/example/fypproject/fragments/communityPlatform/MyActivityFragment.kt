@@ -1,7 +1,9 @@
 package com.example.fypproject.fragments.communityPlatform
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,8 +39,11 @@ class MyActivityFragment : Fragment(), PassCommData {
 
         binding = FragmentMyActivityBinding.inflate(inflater,container,false)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+//        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//        Log.v(ContentValues.TAG, "The user ID is : $userUId")
+
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Posts")
 

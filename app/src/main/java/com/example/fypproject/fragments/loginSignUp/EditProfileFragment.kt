@@ -54,7 +54,7 @@ class EditProfileFragment : Fragment() {
     private var email=""
     private var phone = ""
     private var password = ""
-    private var imageUrl: Uri? = null
+    private var imageUri: Uri? = null
 
 
     override fun onCreateView(
@@ -91,9 +91,9 @@ class EditProfileFragment : Fragment() {
 
         binding.userImage.setOnClickListener {
             val intent = Intent()
-            intent.action = Intent.ACTION_GET_CONTENT
             intent.type = "image/*"
-            startActivityForResult(intent, 1)
+            intent.action = Intent.ACTION_GET_CONTENT
+
             imageResultLauncher.launch(intent)
         }
 
@@ -125,21 +125,35 @@ class EditProfileFragment : Fragment() {
 
             val userID = FirebaseAuth.getInstance().currentUser!!.uid
 
-            val filePathAndName = "userProfile/$userID"
+            if(imageUri == null){
+                val uploadedPostImageUrl = ""
+                updateUser(username, phone,email,password,uploadedPostImageUrl)
+            }else {
 
-            val storageReference = FirebaseStorage.getInstance().getReference(filePathAndName)
-            storageReference.putFile(imageUrl!!)
-                .addOnSuccessListener {taskSnapshot ->
-                    val uriTask: Task<Uri> = taskSnapshot.storage.downloadUrl
-                    while (!uriTask.isSuccessful);
-                    val uploadedPostImageUrl = "${uriTask.result}"
-                    updateUser(username, phone,email,password,uploadedPostImageUrl)   //Upload to real time database
-                    //uploadCampaignInfoToDb(uploadedCampaignUrl, postID.toString())
-                    //Toast.makeText(context,"Successful",Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener{ e ->
-                    Toast.makeText(context,"Failed to upload ${e.message}",Toast.LENGTH_SHORT).show()
-                }
+                val filePathAndName = "userProfile/$userID"
+
+                val storageReference = FirebaseStorage.getInstance().getReference(filePathAndName)
+                storageReference.putFile(imageUri!!)
+                    .addOnSuccessListener { taskSnapshot ->
+                        val uriTask: Task<Uri> = taskSnapshot.storage.downloadUrl
+                        while (!uriTask.isSuccessful);
+                        val uploadedPostImageUrl = "${uriTask.result}"
+                        updateUser(
+                            username,
+                            phone,
+                            email,
+                            password,
+                            uploadedPostImageUrl
+                        )   //Upload to real time database
+
+                        //uploadCampaignInfoToDb(uploadedCampaignUrl, postID.toString())
+                        //Toast.makeText(context,"Successful",Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, "Failed to upload ${e.message}", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+            }
 
 
         }
@@ -153,8 +167,8 @@ class EditProfileFragment : Fragment() {
         ActivityResultCallback<ActivityResult> { result ->
             if (result.resultCode == AppCompatActivity.RESULT_OK) {
                 Log.d(TAG, "Picture Picked")
-                imageUrl = result.data!!.data
-                binding.userImage.setImageURI(imageUrl)
+                imageUri = result.data!!.data
+                binding.userImage.setImageURI(imageUri)
 
             } else {
                 Log.d(
@@ -193,7 +207,6 @@ class EditProfileFragment : Fragment() {
 
         /*val msUntilTriggerHour: Long = 30000
         val alarmTimeAtUTC: Long = System.currentTimeMillis() + msUntilTriggerHour
-
 // Depending on the version of Android use different function for setting an
 // Alarm.
 // setAlarmClock() - used for everything lower than Android M
@@ -220,19 +233,19 @@ class EditProfileFragment : Fragment() {
 
         val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
-        database.child(userUId)
-            .setValue(user).addOnSuccessListener {
-                binding.txtName.text.clear()
-                binding.txtEmail.text.clear()
-                binding.txtPhone.text.clear()
-                binding.txtPassword.text.clear()
-                Toast.makeText(context, "Edit Successfully!", Toast.LENGTH_SHORT).show()
+            database.child(userUId)
+                .setValue(user).addOnSuccessListener {
+                    binding.txtName.text.clear()
+                    binding.txtEmail.text.clear()
+                    binding.txtPhone.text.clear()
+                    binding.txtPassword.text.clear()
+                    Toast.makeText(context, "Edit Successfully!", Toast.LENGTH_SHORT).show()
 
-                replaceFragment(UserProfileFragment())   // Need to change replace dashboard fragment
+                    replaceFragment(UserProfileFragment())   // Need to change replace dashboard fragment
 
-            }.addOnFailureListener{
-                Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-            }
+                }.addOnFailureListener {
+                    Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+                }
 
     }
 

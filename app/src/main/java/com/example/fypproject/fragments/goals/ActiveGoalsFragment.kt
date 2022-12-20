@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.fypproject.R
 import com.example.fypproject.adapter.GoalRecyclerAdapter
 import com.example.fypproject.data.Goals
@@ -21,6 +22,7 @@ import com.example.fypproject.fragments.communityPlatform.CommunityFragment
 import com.example.fypproject.fragments.goals.dashboard.Communicator
 import com.example.fypproject.fragments.goals.dashboard.DashBoardFragment
 import com.example.fypproject.fragments.goals.GoalsDetailsFragment
+import com.example.fypproject.fragments.goals.dashboard.DashboardPagerAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
@@ -32,7 +34,7 @@ import java.util.ArrayList
 import java.util.Calendar
 
 
-class ActiveGoalsFragment : Fragment(), Communicator {
+class ActiveGoalsFragment () : Fragment(), Communicator {
 
     private lateinit var binding : FragmentActiveGoalsBinding
     private lateinit var db : DatabaseReference
@@ -50,12 +52,13 @@ class ActiveGoalsFragment : Fragment(), Communicator {
         binding = FragmentActiveGoalsBinding.inflate(inflater,container,false)
         //val view =inflater.inflate(R.layout.fragment_active_goals,container,false)
 
-        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
-        Log.v(TAG, "The user ID is : $userUId")
+//        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//        Log.v(TAG, "The user ID is : $userUId")
 
 //        auth = FirebaseAuth.getInstance()
 //        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
+
         db = FirebaseDatabase.getInstance().getReference("Goals")
 
         userRecyclerView = binding.goalRecyclerView
@@ -64,16 +67,14 @@ class ActiveGoalsFragment : Fragment(), Communicator {
         userArrayList = arrayListOf<Goals>()
 
         checkExpiredGoal()
-        getGoalsData(userUId)
+        getGoalsData()
 
         return binding.root
     }
 
-    private fun getGoalsData(userUId : String){
+    private fun getGoalsData(){
 
-//        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
-
-        Log.v(TAG, "The user ID is : $userUId")
+        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val getData = db.child("Active").child(userUId)
 

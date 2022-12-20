@@ -145,7 +145,21 @@ class RecommendationFragment : DialogFragment() {
 
         getData.child(userUId).get().addOnSuccessListener {
             val mood = it.child("mood").value.toString()
-            binding.inputMood.setText(mood)
+            val moodText : String
+
+            if(mood == "verySad" || mood == "UPSET" || mood == "RED" || mood == "OneStar"){
+                moodText = "Very Sad"
+            }else if (mood == "sad" || mood == "DOWN" || mood == "ORANGE" || mood == "TwoStar"){
+                moodText = "Sad"
+            }else if (mood == "sad" || mood == "NEUTRAL" || mood == "YELLOW" || mood == "ThreeStar"){
+                moodText = "Normal"
+            }else if (mood == "happy" || mood == "COPING" || mood == "GREEN" || mood == "FourStar"){
+                moodText = "Happy"
+            }else{
+                moodText = "Very Happy"
+            }
+
+            binding.inputMood.setText(moodText)
             binding.recommendationMusic.text = getRecommMusic(mood)
             binding.recommendationMovie.text = getRecommMovie(mood)
 

@@ -1,6 +1,8 @@
 package com.example.fypproject.fragments.communityPlatform
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,8 +43,11 @@ class MyBookmarkFragment : Fragment(R.layout.fragment_my_bookmark), PassCommData
         //return inflater.inflate(R.layout.fragment_my_bookmark, container, false)
         binding = FragmentMyBookmarkBinding.inflate(inflater,container,false)
 
-        auth = FirebaseAuth.getInstance()
-        tempUId = auth.uid.toString()
+//        val userUId = FirebaseAuth.getInstance().currentUser!!.uid
+//        Log.v(ContentValues.TAG, "The user ID is : $userUId")
+
+//        auth = FirebaseAuth.getInstance()
+//        tempUId = auth.uid.toString()
         //userUId = tempUId              //Need to uncomment this in real work, because this is to get that signed in user id
         db = FirebaseDatabase.getInstance().getReference("Bookmarks")
 
