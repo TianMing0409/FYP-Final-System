@@ -227,25 +227,26 @@ class EditProfileFragment : Fragment() {
         Toast.makeText(context,"Notification Set Successfully", Toast.LENGTH_SHORT).show()
     }
 
-    private fun updateUser(username:String, phone:String, email:String, password:String, imageUrl:String){
+    private fun updateUser(username:String, phone:String, email:String, password:String, imageUrl:String) {
 
         val user = UserData(username, phone, email, password, imageUrl)
 
         val userUId = FirebaseAuth.getInstance().currentUser!!.uid
 
-            database.child(userUId)
-                .setValue(user).addOnSuccessListener {
-                    binding.txtName.text.clear()
-                    binding.txtEmail.text.clear()
-                    binding.txtPhone.text.clear()
-                    binding.txtPassword.text.clear()
-                    Toast.makeText(context, "Edit Successfully!", Toast.LENGTH_SHORT).show()
+        database.child(userUId)
+            .setValue(user).addOnSuccessListener {
+                binding.txtName.text.clear()
+                binding.txtEmail.text.clear()
+                binding.txtPhone.text.clear()
+                binding.txtPassword.text.clear()
+                Toast.makeText(context, "Edit Successfully!", Toast.LENGTH_SHORT).show()
 
-                    replaceFragment(UserProfileFragment())   // Need to change replace dashboard fragment
+                replaceFragment(UserProfileFragment())   // Need to change replace dashboard fragment
 
-                }.addOnFailureListener {
-                    Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-                }
+            }.addOnFailureListener {
+                Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+            }
+
 
     }
 

@@ -4,49 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="wrap_content"
     android:clickable="true"
-    android:focusable="true"
-    app:cardCornerRadius="10dp">
+    android:focusable="true">
 
     <RelativeLayout
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#03A9F4"
-        android:padding="20dp">
+        android:background="#76dade"
+        android:paddingBottom="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="376dp"
-            android:layout_height="118dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
             <TextView
                 android:id="@+id/boxBackground"
-                android:layout_width="349dp"
-                android:layout_height="116dp"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="15dp"
                 android:background="@drawable/box"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.488"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/goal_image_CG"
-                android:layout_width="48dp"
-                android:layout_height="75dp"
+                android:layout_width="51dp"
+                android:layout_height="74dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="36dp"
                 android:src="@drawable/keyboard_arrow_right_icon"
                 app:layout_constraintBottom_toBottomOf="@+id/boxBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
+                app:layout_constraintVertical_bias="0.581" />
 
             <TextView
                 android:id="@+id/shcedule_date_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="serif"
                 android:text="Target Date:"
                 android:textColor="@android:color/black"
@@ -75,8 +78,8 @@
                 android:id="@+id/goal_title"
                 android:layout_width="265dp"
                 android:layout_height="51dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="serif"
                 android:text="Active Goals Tilte"
                 android:textColor="@android:color/black"
