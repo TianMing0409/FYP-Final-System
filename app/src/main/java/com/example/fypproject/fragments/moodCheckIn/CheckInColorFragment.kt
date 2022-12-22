@@ -60,6 +60,11 @@ class CheckInColorFragment : DialogFragment() {
             } else {
                 submitMoodEntry(checkBoxList, notesEditText)
                 replaceFragment(HistoryCheckInFragment())
+
+                val recommDialog = RecommendationFragment()
+
+                recommDialog.show((activity as AppCompatActivity).supportFragmentManager, "showPopUp")
+
             }
         }
     }
