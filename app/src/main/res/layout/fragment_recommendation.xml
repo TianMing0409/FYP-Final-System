@@ -12,8 +12,8 @@
 
         <View
             android:id="@+id/view2"
-            android:layout_width="371dp"
-            android:layout_height="510dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@drawable/white_box_with_border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,12 +23,12 @@
 
         <TextView
             android:id="@+id/recommendationMusic"
-            android:layout_width="160dp"
+            android:layout_width="130dp"
             android:layout_height="84dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
-            android:autoSizeMaxTextSize="20sp"
-            android:autoSizeMinTextSize="18sp"
+            android:autoSizeMaxTextSize="18sp"
+            android:autoSizeMinTextSize="14sp"
             android:autoSizeStepGranularity="1sp"
             android:autoSizeTextType="uniform"
             android:gravity="center_vertical"
@@ -42,9 +42,9 @@
 
         <Button
             android:id="@+id/addRecommMusicBtn"
-            android:layout_width="102dp"
-            android:layout_height="59dp"
-            android:layout_marginStart="12dp"
+            android:layout_width="88dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="5dp"
             android:backgroundTint="#40FF7F"
             android:text="Set as goal"
             android:textColor="#000000"
@@ -53,7 +53,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/recommendationMusic"
             app:layout_constraintStart_toEndOf="@+id/recommendationMusic"
             app:layout_constraintTop_toTopOf="@+id/recommendationMusic"
-            app:layout_constraintVertical_bias="0.35"
+            app:layout_constraintVertical_bias="0.615"
             app:strokeWidth="2dp" />
 
         <Button
@@ -116,12 +116,12 @@
 
         <TextView
             android:id="@+id/recommendationMovie"
-            android:layout_width="160dp"
+            android:layout_width="130dp"
             android:layout_height="84dp"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="36dp"
-            android:autoSizeMaxTextSize="20sp"
-            android:autoSizeMinTextSize="18sp"
+            android:layout_marginTop="32dp"
+            android:autoSizeMaxTextSize="18sp"
+            android:autoSizeMinTextSize="14sp"
             android:autoSizeStepGranularity="1sp"
             android:autoSizeTextType="uniform"
             android:gravity="center_vertical"
@@ -135,9 +135,10 @@
 
         <Button
             android:id="@+id/addRecommMovieBtn"
-            android:layout_width="102dp"
+            android:layout_width="88dp"
             android:layout_height="58dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="4dp"
             android:backgroundTint="#40FF7F"
             android:text="Set as goal"
@@ -147,12 +148,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/recommendationMovie"
             app:layout_constraintStart_toEndOf="@+id/recommendationMovie"
             app:layout_constraintTop_toTopOf="@+id/recommendationMovie"
-            app:layout_constraintVertical_bias="0.823"
+            app:layout_constraintVertical_bias="0.454"
             app:strokeWidth="2dp" />
 
         <View
             android:id="@+id/view"
-            android:layout_width="370dp"
+            android:layout_width="0dp"
             android:layout_height="102dp"
             android:background="@drawable/gradient_background1"
             app:layout_constraintEnd_toEndOf="@+id/view2"
@@ -162,19 +163,21 @@
 
         <TextView
             android:id="@+id/textView22"
-            android:layout_width="371dp"
-            android:layout_height="410dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@drawable/gradient_background"
             app:layout_constraintBottom_toBottomOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/goToGoalLink"
             android:layout_width="216dp"
             android:layout_height="28dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="19dp"
             android:text="Click here to set your own goal"
             android:textColor="#5E5E5E"
             android:textSize="16sp"
@@ -186,24 +189,23 @@
 
         <ImageView
             android:id="@+id/listenMusciPic"
-            android:layout_width="66dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
             android:src="@drawable/listen_music_icon"
             app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="62dp"
-            android:layout_height="78dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="44dp"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="48dp"
             android:src="@drawable/watch_movie_icon"
-            app:layout_constraintStart_toStartOf="@+id/view2"
+            app:layout_constraintStart_toStartOf="@+id/listenMusciPic"
             app:layout_constraintTop_toBottomOf="@+id/listenMusciPic" />
 
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
