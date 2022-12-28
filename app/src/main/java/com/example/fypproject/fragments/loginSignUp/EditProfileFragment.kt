@@ -30,6 +30,7 @@ import com.example.fypproject.MainActivity
 import com.example.fypproject.R
 import com.example.fypproject.data.UserData
 import com.example.fypproject.databinding.FragmentEditProfileBinding
+import com.example.fypproject.fragments.Notification.NotificationActivity
 import com.example.fypproject.fragments.loginSignUp.UserProfileFragment
 import com.google.android.gms.tasks.Task
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -97,23 +98,9 @@ class EditProfileFragment : Fragment() {
             imageResultLauncher.launch(intent)
         }
 
-        binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked){
-                Log.d(javaClass.name, "Subscribing to discount-offers topic")
-
-                FirebaseMessaging.getInstance().subscribeToTopic("discount-offers")
-                    .addOnCompleteListener { task ->
-                        showToast("Notification ON!! You will receive mood check in notifications")
-                        if (!task.isSuccessful) {
-                            showToast("Failed! Try again.")
-                        }
-                    }
-
-            }
-            else{
-                showToast("Notification OFF.")
-
-            }
+        binding.tvSetNotification.setOnClickListener {
+            val intent = Intent (getActivity(), NotificationActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnUpdate.setOnClickListener {

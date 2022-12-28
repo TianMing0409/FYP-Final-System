@@ -127,14 +127,14 @@
 
         <Button
             android:id="@+id/okCongratBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="312dp"
+            android:layout_width="123dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="310dp"
             android:text="OK"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.467"
+            app:layout_constraintHorizontal_bias="0.468"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/congratView" />
 
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

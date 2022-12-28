@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.text.set
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.get
 import com.example.fypproject.R
 import com.example.fypproject.data.Goals
@@ -47,6 +49,17 @@ class AddGoalsFragment : Fragment() {
 
         //val view =inflater.inflate(R.layout.fragment_add_goals,container,false)
         binding = FragmentAddGoalsBinding.inflate(inflater,container,false)
+
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+//        activity?.window?.decorView?.setOnApplyWindowInsetsListener { view, insets ->
+//            val insetsCompat = WindowInsetsCompat.toWindowInsetsCompat(insets, view)
+//            val isImeVisible = insetsCompat.isVisible(WindowInsetsCompat.Type.ime())
+//            // below line, do the necessary stuff:
+////            binding.bottom.visibility =  if (isImeVisible) View.GONE else View.VISIBLE
+//            activity?.findViewById<View>(R.id.bottom_navigation)?.visibility  = if (isImeVisible) View.GONE else View.VISIBLE
+//            view.onApplyWindowInsets(insets)
+//        }
+
 
         binding.inputGoal.setText("")   //Original empty goal
 

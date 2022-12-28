@@ -41,9 +41,11 @@
 
         <EditText
             android:id="@+id/inputPost"
-            android:layout_width="380dp"
+            android:layout_width="0dp"
             android:layout_height="165dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/white_box_with_border"
             android:ems="10"
             android:gravity="start|top"
@@ -74,7 +76,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="290dp"
-            android:background="#D1D1D1"
+            android:background="#E3E3E3"
             android:src="@drawable/add_photo_alternate_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

@@ -12,7 +12,7 @@
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#76dade"
+        android:background="#15b8eb"
         android:paddingBottom="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

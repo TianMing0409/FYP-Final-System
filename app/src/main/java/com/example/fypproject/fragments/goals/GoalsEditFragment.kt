@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.WindowInsetsCompat
 import com.example.fypproject.R
 import com.example.fypproject.data.Goals
 import com.example.fypproject.databinding.FragmentGoalsDetailsBinding
@@ -44,6 +46,19 @@ class GoalsEditFragment : Fragment() {
 
         //val view =inflater.inflate(R.layout.fragment_goals_edit,container,false)
         binding = FragmentGoalsEditBinding.inflate(inflater,container,false)
+
+
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+//        activity?.window?.decorView?.setOnApplyWindowInsetsListener { view, insets ->
+//            val insetsCompat = WindowInsetsCompat.toWindowInsetsCompat(insets, view)
+//            val isImeVisible = insetsCompat.isVisible(WindowInsetsCompat.Type.ime())
+//            // below line, do the necessary stuff:
+////            binding.bottom.visibility =  if (isImeVisible) View.GONE else View.VISIBLE
+//            activity?.findViewById<View>(R.id.bottom_navigation)?.visibility  = if (isImeVisible) View.GONE else View.VISIBLE
+//            view.onApplyWindowInsets(insets)
+//        }
+
+
 
 //        auth = FirebaseAuth.getInstance()
 //        tempUId = auth.uid.toString()
